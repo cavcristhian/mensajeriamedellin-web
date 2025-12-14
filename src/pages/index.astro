@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import WhatsAppButton from "../components/WhatsAppButton.astro";
+import MobileMenu from "../components/MobileMenu.astro";
 import { Image, getImage } from "astro:assets";
 import heroBg from "../assets/images/hero_background.png";
 import serviceMoto from "../assets/images/service_moto.png";
@@ -11,6 +12,7 @@ import testimonio2 from "../assets/images/testimonio2.jpg";
 import testimonio3 from "../assets/images/testimonio3.jpg";
 
 const optimizedHeroBg = await getImage({ src: heroBg, format: "webp" });
+const heroImageAbsoluteUrl = new URL(optimizedHeroBg.src, Astro.site);
 ---
 
 <html lang="es">
@@ -24,6 +26,77 @@ const optimizedHeroBg = await getImage({ src: heroBg, format: "webp" });
 			name="description"
 			content="Mensajería Medellín: Red de mensajeros urbanos en moto para trámites, vueltas personales y domicilios en todo el Valle de Aburrá. Servicio rápido y confiable."
 		/>
+		<link rel="canonical" href="https://mensajeriamedellin.com/" />
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://mensajeriamedellin.com/" />
+		<meta
+			property="og:title"
+			content="Mensajería Medellín | Domicilios y Mandados Express"
+		/>
+		<meta
+			property="og:description"
+			content="Red de mensajeros urbanos en moto para trámites, vueltas personales y domicilios en todo el Valle de Aburrá. Servicio rápido y confiable."
+		/>
+		<meta property="og:image" content={heroImageAbsoluteUrl} />
+
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta
+			property="twitter:url"
+			content="https://mensajeriamedellin.com/"
+		/>
+		<meta
+			property="twitter:title"
+			content="Mensajería Medellín | Domicilios y Mandados Express"
+		/>
+		<meta
+			property="twitter:description"
+			content="Red de mensajeros urbanos en moto para trámites, vueltas personales y domicilios en todo el Valle de Aburrá. Servicio rápido y confiable."
+		/>
+		<meta property="twitter:image" content={heroImageAbsoluteUrl} />
+
+		<!-- Schema.org JSON-LD -->
+		<script type="application/ld+json" set:html={JSON.stringify({
+			"@context": "https://schema.org",
+			"@type": "LocalBusiness",
+			"name": "Mensajería Medellín",
+			"image": heroImageAbsoluteUrl,
+			"url": "https://mensajeriamedellin.com",
+			"telephone": "+573003552074",
+			"priceRange": "$$",
+			"address": {
+				"@type": "PostalAddress",
+				"addressLocality": "Medellín",
+				"addressRegion": "Antioquia",
+				"addressCountry": "CO"
+			},
+			"geo": {
+				"@type": "GeoCoordinates",
+				"latitude": 6.2442,
+				"longitude": -75.5812
+			},
+			"openingHoursSpecification": [
+				{
+				"@type": "OpeningHoursSpecification",
+				"dayOfWeek": [
+					"Monday",
+					"Tuesday",
+					"Wednesday",
+					"Thursday",
+					"Friday",
+					"Saturday"
+				],
+				"opens": "08:00",
+				"closes": "18:00"
+				}
+			],
+			"sameAs": [
+				"https://www.facebook.com/profile.php?id=61566679758712"
+			]
+		})}>
+		</script>
 	</head>
 	<body class="font-sans antialiased text-gray-800 bg-gray-50">
 		<header class="bg-white shadow-sm sticky top-0 z-50">
@@ -53,6 +126,7 @@ const optimizedHeroBg = await getImage({ src: heroBg, format: "webp" });
 						>Contacto</a
 					>
 				</nav>
+				<MobileMenu />
 			</div>
 		</header>
 	</body>
@@ -683,6 +757,46 @@ const optimizedHeroBg = await getImage({ src: heroBg, format: "webp" });
 			</div>
 		</section>
 	</main>
+
+	<!-- Back to Top Button -->
+	<button
+		id="back-to-top"
+		aria-label="Volver arriba"
+		class="fixed bottom-24 right-6 bg-brand-blue text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition-all transform translate-y-20 opacity-0 z-40"
+	>
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			class="h-6 w-6"
+			fill="none"
+			viewBox="0 0 24 24"
+			stroke="currentColor"
+		>
+			<path
+				stroke-linecap="round"
+				stroke-linejoin="round"
+				stroke-width="2"
+				d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+		</svg>
+	</button>
+
+	<script>
+		const backToTopBtn = document.getElementById("back-to-top");
+
+		window.addEventListener("scroll", () => {
+			if (window.scrollY > 300) {
+				backToTopBtn?.classList.remove("translate-y-20", "opacity-0");
+			} else {
+				backToTopBtn?.classList.add("translate-y-20", "opacity-0");
+			}
+		});
+
+		backToTopBtn?.addEventListener("click", () => {
+			window.scrollTo({
+				top: 0,
+				behavior: "smooth",
+			});
+		});
+	</script>
 
 	<!-- FAQ Section -->
 	<section class="bg-gray-50 py-12 md:py-20 border-t border-gray-100">
