@@ -1,6 +1,16 @@
 ---
 import "../styles/global.css";
 import WhatsAppButton from "../components/WhatsAppButton.astro";
+import { Image, getImage } from "astro:assets";
+import heroBg from "../assets/images/hero_background.png";
+import serviceMoto from "../assets/images/service_moto.png";
+import serviceDocs from "../assets/images/service_docs.png";
+import serviceErrands from "../assets/images/service_errands.png";
+import testimonio1 from "../assets/images/testimonio1.jpg";
+import testimonio2 from "../assets/images/testimonio2.jpg";
+import testimonio3 from "../assets/images/testimonio3.jpg";
+
+const optimizedHeroBg = await getImage({ src: heroBg, format: "webp" });
 ---
 
 <html lang="es">
@@ -53,7 +63,8 @@ import WhatsAppButton from "../components/WhatsAppButton.astro";
 			class="relative bg-brand-blue text-white py-12 lg:py-24 overflow-hidden"
 		>
 			<div
-				class="absolute inset-0 opacity-20 bg-[url('/images/hero_background.png')] bg-cover bg-center"
+				class="absolute inset-0 opacity-20 bg-cover bg-center"
+				style={`background-image: url('${optimizedHeroBg.src}');`}
 			>
 			</div>
 			<div class="container mx-auto px-4 relative z-10 text-center">
@@ -222,11 +233,11 @@ import WhatsAppButton from "../components/WhatsAppButton.astro";
 						<div
 							class="w-20 h-20 bg-brand-blue/10 rounded-full flex items-center justify-center mb-6 overflow-hidden p-3"
 						>
-							<img
-								src="/images/service_moto.png"
+							<Image
+								src={serviceMoto}
 								alt="Mensajero urbano en moto realizando entregas rápidas en Medellín"
 								class="w-full h-full object-contain"
-								loading="lazy"
+								format="webp"
 							/>
 						</div>
 						<h3 class="text-2xl font-bold text-gray-900 mb-4">
@@ -246,11 +257,11 @@ import WhatsAppButton from "../components/WhatsAppButton.astro";
 						<div
 							class="w-20 h-20 bg-brand-blue/10 rounded-full flex items-center justify-center mb-6 overflow-hidden p-3"
 						>
-							<img
-								src="/images/service_docs.png"
+							<Image
+								src={serviceDocs}
 								alt="Gestión de documentos, trámites notariales y radicación de papeles"
 								class="w-full h-full object-contain"
-								loading="lazy"
+								format="webp"
 							/>
 						</div>
 						<h3 class="text-2xl font-bold text-gray-900 mb-4">
@@ -270,11 +281,11 @@ import WhatsAppButton from "../components/WhatsAppButton.astro";
 						<div
 							class="w-20 h-20 bg-brand-blue/10 rounded-full flex items-center justify-center mb-6 overflow-hidden p-3"
 						>
-							<img
-								src="/images/service_errands.png"
+							<Image
+								src={serviceErrands}
 								alt="Servicio de vueltas personales, compras y diligencias varias"
 								class="w-full h-full object-contain"
-								loading="lazy"
+								format="webp"
 							/>
 						</div>
 						<h3 class="text-2xl font-bold text-gray-900 mb-4">
@@ -444,11 +455,11 @@ import WhatsAppButton from "../components/WhatsAppButton.astro";
 					<div
 						class="bg-gray-50 rounded-xl p-8 border border-gray-100 flex flex-col items-center text-center shadow-sm"
 					>
-						<img
-							src="/images/testimonio1.jpg"
+						<Image
+							src={testimonio1}
 							alt="Carlos Ruiz, cliente satisfecho"
 							class="w-20 h-20 rounded-full object-cover shadow-sm mb-4"
-							loading="lazy"
+							format="webp"
 						/>
 						<div class="flex gap-1 mb-4 text-brand-orange">
 							<svg
@@ -519,11 +530,11 @@ import WhatsAppButton from "../components/WhatsAppButton.astro";
 					<div
 						class="bg-gray-50 rounded-xl p-8 border border-gray-100 flex flex-col items-center text-center shadow-sm"
 					>
-						<img
-							src="/images/testimonio2.jpg"
+						<Image
+							src={testimonio2}
 							alt="Valentina Restrepo, cliente satisfecha"
 							class="w-20 h-20 rounded-full object-cover shadow-sm mb-4"
-							loading="lazy"
+							format="webp"
 						/>
 						<div class="flex gap-1 mb-4 text-brand-orange">
 							<svg
@@ -596,11 +607,11 @@ import WhatsAppButton from "../components/WhatsAppButton.astro";
 					<div
 						class="bg-gray-50 rounded-xl p-8 border border-gray-100 flex flex-col items-center text-center shadow-sm"
 					>
-						<img
-							src="/images/testimonio3.jpg"
+						<Image
+							src={testimonio3}
 							alt="Santiago Mejía, cliente satisfecho"
 							class="w-20 h-20 rounded-full object-cover shadow-sm mb-4"
-							loading="lazy"
+							format="webp"
 						/>
 						<div class="flex gap-1 mb-4 text-brand-orange">
 							<svg
