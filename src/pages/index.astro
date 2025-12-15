@@ -11,6 +11,9 @@ import serviceErrands from "../assets/images/service_errands.png";
 import testimonio1 from "../assets/images/testimonio1.jpg";
 import testimonio2 from "../assets/images/testimonio2.jpg";
 import testimonio3 from "../assets/images/testimonio3.jpg";
+
+const optimizedHeroBg = await getImage({ src: heroBg, format: "webp" });
+const heroImageAbsoluteUrl = new URL(optimizedHeroBg.src, Astro.site);
 ---
 
 <Layout
