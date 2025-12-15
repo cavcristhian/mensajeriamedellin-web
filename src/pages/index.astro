@@ -11,9 +11,6 @@ import serviceErrands from "../assets/images/service_errands.png";
 import testimonio1 from "../assets/images/testimonio1.jpg";
 import testimonio2 from "../assets/images/testimonio2.jpg";
 import testimonio3 from "../assets/images/testimonio3.jpg";
-
-const optimizedHeroBg = await getImage({ src: heroBg, format: "webp" });
-const heroImageAbsoluteUrl = new URL(optimizedHeroBg.src, Astro.site);
 ---
 
 <Layout
@@ -62,10 +59,15 @@ const heroImageAbsoluteUrl = new URL(optimizedHeroBg.src, Astro.site);
 		<section
 			class="relative bg-brand-blue text-white py-12 lg:py-24 overflow-hidden"
 		>
-			<div
-				class="absolute inset-0 opacity-20 bg-cover bg-center"
-				style={`background-image: url('${optimizedHeroBg.src}');`}
-			>
+			<div class="absolute inset-0 opacity-20">
+				<Image
+					src={heroBg}
+					alt="Background"
+					class="w-full h-full object-cover"
+					loading="eager"
+					fetchpriority="high"
+					format="webp"
+				/>
 			</div>
 			<div class="container mx-auto px-4 relative z-10 text-center">
 				<h1
