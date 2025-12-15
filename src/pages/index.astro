@@ -70,6 +70,9 @@ const heroImageAbsoluteUrl = new URL(optimizedHeroBg.src, Astro.site);
 					loading="eager"
 					fetchpriority="high"
 					format="webp"
+					quality="mid"
+					width={1280}
+					densities={[1, 2]}
 				/>
 			</div>
 			<div class="container mx-auto px-4 relative z-10 text-center">
@@ -242,6 +245,7 @@ const heroImageAbsoluteUrl = new URL(optimizedHeroBg.src, Astro.site);
 								src={serviceMoto}
 								alt="Mensajero urbano en moto realizando entregas rápidas en Medellín"
 								class="w-full h-full object-contain"
+								width={200}
 								format="webp"
 							/>
 						</div>
@@ -266,6 +270,7 @@ const heroImageAbsoluteUrl = new URL(optimizedHeroBg.src, Astro.site);
 								src={serviceDocs}
 								alt="Gestión de documentos, trámites notariales y radicación de papeles"
 								class="w-full h-full object-contain"
+								width={200}
 								format="webp"
 							/>
 						</div>
@@ -290,6 +295,7 @@ const heroImageAbsoluteUrl = new URL(optimizedHeroBg.src, Astro.site);
 								src={serviceErrands}
 								alt="Servicio de vueltas personales, compras y diligencias varias"
 								class="w-full h-full object-contain"
+								width={200}
 								format="webp"
 							/>
 						</div>
@@ -464,6 +470,7 @@ const heroImageAbsoluteUrl = new URL(optimizedHeroBg.src, Astro.site);
 							src={testimonio1}
 							alt="Carlos Ruiz, cliente satisfecho"
 							class="w-20 h-20 rounded-full object-cover shadow-sm mb-4"
+							width={160}
 							format="webp"
 						/>
 						<div class="flex gap-1 mb-4 text-brand-orange">
@@ -539,6 +546,7 @@ const heroImageAbsoluteUrl = new URL(optimizedHeroBg.src, Astro.site);
 							src={testimonio2}
 							alt="Valentina Restrepo, cliente satisfecha"
 							class="w-20 h-20 rounded-full object-cover shadow-sm mb-4"
+							width={160}
 							format="webp"
 						/>
 						<div class="flex gap-1 mb-4 text-brand-orange">
@@ -616,6 +624,7 @@ const heroImageAbsoluteUrl = new URL(optimizedHeroBg.src, Astro.site);
 							src={testimonio3}
 							alt="Santiago Mejía, cliente satisfecho"
 							class="w-20 h-20 rounded-full object-cover shadow-sm mb-4"
+							width={160}
 							format="webp"
 						/>
 						<div class="flex gap-1 mb-4 text-brand-orange">
