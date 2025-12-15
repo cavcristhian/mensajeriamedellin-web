@@ -1,0 +1,58 @@
+---
+import "../styles/global.css";
+
+interface Props {
+    title: string;
+    description?: string;
+    image?: string;
+}
+
+const {
+    title,
+    description = "Red de mensajeros urbanos en moto para trámites, vueltas personales y domicilios en todo el Valle de Aburrá. Servicio rápido y confiable.",
+    image,
+} = Astro.props;
+
+// Use provided image or fallback to a default if available, otherwise undefined
+const socialImage =
+    image || (Astro.site ? new URL("/logo.png", Astro.site) : "/logo.png");
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/png" href="/favicon.png" />
+        <link rel="apple-touch-icon" href="/icon-192.png" />
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="generator" content={Astro.generator} />
+        <meta name="theme-color" content="#0066cc" />
+
+        <!-- SEO -->
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <link rel="canonical" href={canonicalURL} />
+
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={canonicalURL} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content={socialImage} />
+
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content={canonicalURL} />
+        <meta property="twitter:title" content={title} />
+        <meta property="twitter:description" content={description} />
+        <meta property="twitter:image" content={socialImage} />
+
+        <!-- Schema.org -->
+        <slot name="schema" />
+    </head>
+    <body class="font-sans antialiased text-gray-800 bg-gray-50">
+        <slot />
+    </body>
+</html>

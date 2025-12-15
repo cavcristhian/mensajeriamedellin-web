@@ -1,15 +1,10 @@
 ---
 import "../styles/global.css";
+import Layout from "../layouts/Layout.astro";
 ---
 
-<html lang="es">
-    <head>
-        <meta charset="utf-8" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <meta name="viewport" content="width=device-width" />
-        <title>Página no encontrada | Mensajería Medellín</title>
-    </head>
-    <body
+<Layout title="Página no encontrada | Mensajería Medellín">
+    <div
         class="bg-gray-50 flex items-center justify-center min-h-screen text-center px-4"
     >
         <div class="max-w-md">
@@ -28,5 +23,5 @@ import "../styles/global.css";
                 Volver al Inicio
             </a>
         </div>
-    </body>
-</html>
+    </div>
+</Layout>

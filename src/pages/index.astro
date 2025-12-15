@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import Layout from "../layouts/Layout.astro";
 import WhatsAppButton from "../components/WhatsAppButton.astro";
 import MobileMenu from "../components/MobileMenu.astro";
 import { Image, getImage } from "astro:assets";
@@ -15,124 +16,46 @@ const optimizedHeroBg = await getImage({ src: heroBg, format: "webp" });
 const heroImageAbsoluteUrl = new URL(optimizedHeroBg.src, Astro.site);
 ---
 
-<html lang="es">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/png" href="/logo.png" />
-		<link rel="manifest" href="/manifest.json" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="theme-color" content="#0066cc" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Mensajería Medellín | Domicilios y Mandados Express</title>
-		<meta
-			name="description"
-			content="Mensajería Medellín: Red de mensajeros urbanos en moto para trámites, vueltas personales y domicilios en todo el Valle de Aburrá. Servicio rápido y confiable."
-		/>
-		<link rel="canonical" href="https://mensajeriamedellin.com/" />
-
-		<!-- Open Graph / Facebook -->
-		<meta property="og:type" content="website" />
-		<meta property="og:url" content="https://mensajeriamedellin.com/" />
-		<meta
-			property="og:title"
-			content="Mensajería Medellín | Domicilios y Mandados Express"
-		/>
-		<meta
-			property="og:description"
-			content="Red de mensajeros urbanos en moto para trámites, vueltas personales y domicilios en todo el Valle de Aburrá. Servicio rápido y confiable."
-		/>
-		<meta property="og:image" content={heroImageAbsoluteUrl} />
-
-		<!-- Twitter -->
-		<meta property="twitter:card" content="summary_large_image" />
-		<meta
-			property="twitter:url"
-			content="https://mensajeriamedellin.com/"
-		/>
-		<meta
-			property="twitter:title"
-			content="Mensajería Medellín | Domicilios y Mandados Express"
-		/>
-		<meta
-			property="twitter:description"
-			content="Red de mensajeros urbanos en moto para trámites, vueltas personales y domicilios en todo el Valle de Aburrá. Servicio rápido y confiable."
-		/>
-		<meta property="twitter:image" content={heroImageAbsoluteUrl} />
-
-		<!-- Schema.org JSON-LD -->
-		<script type="application/ld+json" set:html={JSON.stringify({
-			"@context": "https://schema.org",
-			"@type": "LocalBusiness",
-			"name": "Mensajería Medellín",
-			"image": heroImageAbsoluteUrl,
-			"url": "https://mensajeriamedellin.com",
-			"telephone": "+573332815872",
-			"priceRange": "$$",
-			"address": {
-				"@type": "PostalAddress",
-				"addressLocality": "Medellín",
-				"addressRegion": "Antioquia",
-				"addressCountry": "CO"
-			},
-			"geo": {
-				"@type": "GeoCoordinates",
-				"latitude": 6.2442,
-				"longitude": -75.5812
-			},
-			"openingHoursSpecification": [
-				{
-				"@type": "OpeningHoursSpecification",
-				"dayOfWeek": [
-					"Monday",
-					"Tuesday",
-					"Wednesday",
-					"Thursday",
-					"Friday",
-					"Saturday"
-				],
-				"opens": "08:00",
-				"closes": "18:00"
-				}
-			],
-			"sameAs": [
-				"https://www.facebook.com/profile.php?id=61566679758712"
-			]
-		})}>
-		</script>
-	</head>
-	<body class="font-sans antialiased text-gray-800 bg-gray-50">
-		<header class="bg-white shadow-sm sticky top-0 z-50">
-			<div
-				class="container mx-auto px-4 py-4 flex justify-between items-center"
+<Layout
+	title="Mensajería Medellín | Domicilios y Mandados Express"
+	description="Mensajería Medellín: Red de mensajeros urbanos en moto para trámites, vueltas personales y domicilios en todo el Valle de Aburrá. Servicio rápido y confiable."
+	image={heroImageAbsoluteUrl.toString()}
+>
+	<header class="bg-white shadow-sm sticky top-0 z-50">
+		<div
+			class="container mx-auto px-4 py-4 flex justify-between items-center"
+		>
+			<a
+				href="#"
+				class="text-2xl font-bold text-brand-blue tracking-tight flex items-center gap-2"
 			>
+				<img
+					src="/logo.png"
+					alt="Logo Mensajería Medellín"
+					class="h-10 w-10 object-contain"
+				/>
+				Mensajería Medellín
+			</a>
+			<nav class="hidden md:block">
 				<a
-					href="#"
-					class="text-2xl font-bold text-brand-blue tracking-tight flex items-center gap-2"
+					href="#servicios"
+					class="text-gray-600 hover:text-brand-blue px-3 py-2 font-medium"
+					>Servicios</a
 				>
-					<img src="/logo.png" alt="Logo Mensajería Medellín" class="h-10 w-10 object-contain" />
-					Mensajería Medellín
-				</a>
-				<nav class="hidden md:block">
-					<a
-						href="#servicios"
-						class="text-gray-600 hover:text-brand-blue px-3 py-2 font-medium"
-						>Servicios</a
-					>
-					<a
-						href="#testimonios"
-						class="text-gray-600 hover:text-brand-blue px-3 py-2 font-medium"
-						>Testimonios</a
-					>
-					<a
-						href="#contacto"
-						class="text-gray-600 hover:text-brand-blue px-3 py-2 font-medium"
-						>Contacto</a
-					>
-				</nav>
-				<MobileMenu />
-			</div>
-		</header>
-	</body>
+				<a
+					href="#testimonios"
+					class="text-gray-600 hover:text-brand-blue px-3 py-2 font-medium"
+					>Testimonios</a
+				>
+				<a
+					href="#contacto"
+					class="text-gray-600 hover:text-brand-blue px-3 py-2 font-medium"
+					>Contacto</a
+				>
+			</nav>
+			<MobileMenu />
+		</div>
+	</header>
 
 	<main>
 		<!-- Hero Section -->
@@ -862,7 +785,7 @@ const heroImageAbsoluteUrl = new URL(optimizedHeroBg.src, Astro.site);
 			</div>
 		</div>
 	</section>
-</html>
+</Layout>
 
 <footer id="contacto" class="bg-gray-900 text-white py-10">
 	<div class="container mx-auto px-4">
