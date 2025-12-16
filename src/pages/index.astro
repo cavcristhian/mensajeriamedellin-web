@@ -722,109 +722,116 @@ const heroImageAbsoluteUrl = new URL(optimizedHeroBg.src, Astro.site);
 				</div>
 			</div>
 		</section>
-	</main>
 
-	<!-- Back to Top Button -->
-	<button
-		id="back-to-top"
-		aria-label="Volver arriba"
-		class="fixed bottom-24 right-6 bg-brand-blue text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition-all transform translate-y-20 opacity-0 z-40"
-	>
-		<svg
-			xmlns="http://www.w3.org/2000/svg"
-			class="h-6 w-6"
-			fill="none"
-			viewBox="0 0 24 24"
-			stroke="currentColor"
+		<!-- Back to Top Button -->
+		<button
+			id="back-to-top"
+			aria-label="Volver arriba"
+			class="fixed bottom-24 right-6 bg-brand-blue text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition-all transform translate-y-20 opacity-0 z-40"
 		>
-			<path
-				stroke-linecap="round"
-				stroke-linejoin="round"
-				stroke-width="2"
-				d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
-		</svg>
-	</button>
-
-	<script>
-		const backToTopBtn = document.getElementById("back-to-top");
-
-		window.addEventListener("scroll", () => {
-			if (window.scrollY > 300) {
-				backToTopBtn?.classList.remove("translate-y-20", "opacity-0");
-			} else {
-				backToTopBtn?.classList.add("translate-y-20", "opacity-0");
-			}
-		});
-
-		backToTopBtn?.addEventListener("click", () => {
-			window.scrollTo({
-				top: 0,
-				behavior: "smooth",
-			});
-		});
-	</script>
-
-	<!-- FAQ Section -->
-	<section class="bg-gray-50 py-12 md:py-20 border-t border-gray-100">
-		<div class="container mx-auto px-4">
-			<div class="text-center mb-10">
-				<h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-					Preguntas Frecuentes
-				</h2>
-				<p class="text-xl text-gray-600 max-w-2xl mx-auto">
-					Resolvemos tus dudas principales sobre nuestro servicio.
-				</p>
-			</div>
-
-			<div
-				class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto"
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				class="h-6 w-6"
+				fill="none"
+				viewBox="0 0 24 24"
+				stroke="currentColor"
 			>
-				<!-- Q1 -->
-				<div>
-					<h3 class="text-xl font-bold text-gray-900 mb-3">
-						¿Cuáles son los métodos de pago?
-					</h3>
-					<p class="text-gray-600 leading-relaxed">
-						Aceptamos efectivo, transferencia Bancolombia y Nequi.
-						Para empresas, ofrecemos facturación electrónica.
+				<path
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					stroke-width="2"
+					d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+			</svg>
+		</button>
+
+		<script>
+			const backToTopBtn = document.getElementById("back-to-top");
+
+			window.addEventListener("scroll", () => {
+				if (window.scrollY > 300) {
+					backToTopBtn?.classList.remove(
+						"translate-y-20",
+						"opacity-0",
+					);
+				} else {
+					backToTopBtn?.classList.add("translate-y-20", "opacity-0");
+				}
+			});
+
+			backToTopBtn?.addEventListener("click", () => {
+				window.scrollTo({
+					top: 0,
+					behavior: "smooth",
+				});
+			});
+		</script>
+
+		<!-- FAQ Section -->
+		<section class="bg-gray-50 py-12 md:py-20 border-t border-gray-100">
+			<div class="container mx-auto px-4">
+				<div class="text-center mb-10">
+					<h2
+						class="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
+					>
+						Preguntas Frecuentes
+					</h2>
+					<p class="text-xl text-gray-600 max-w-2xl mx-auto">
+						Resolvemos tus dudas principales sobre nuestro servicio.
 					</p>
 				</div>
 
-				<!-- Q2 -->
-				<div>
-					<h3 class="text-xl font-bold text-gray-900 mb-3">
-						¿Cuál es la zona de cobertura?
-					</h3>
-					<p class="text-gray-600 leading-relaxed">
-						Cubrimos todo el Área Metropolitana: Medellín, Envigado,
-						Sabaneta, Itagüí, La Estrella y Bello.
-					</p>
-				</div>
+				<div
+					class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto"
+				>
+					<!-- Q1 -->
+					<div>
+						<h3 class="text-xl font-bold text-gray-900 mb-3">
+							¿Cuáles son los métodos de pago?
+						</h3>
+						<p class="text-gray-600 leading-relaxed">
+							Aceptamos efectivo, transferencia Bancolombia y
+							Nequi. Para empresas, ofrecemos facturación
+							electrónica.
+						</p>
+					</div>
 
-				<!-- Q3 -->
-				<div>
-					<h3 class="text-xl font-bold text-gray-900 mb-3">
-						¿Hacen pagos o compras por mí?
-					</h3>
-					<p class="text-gray-600 leading-relaxed">
-						Sí. Podemos pagar facturas o comprar artículos. Si el
-						valor es alto, requerimos transferencia previa.
-					</p>
-				</div>
+					<!-- Q2 -->
+					<div>
+						<h3 class="text-xl font-bold text-gray-900 mb-3">
+							¿Cuál es la zona de cobertura?
+						</h3>
+						<p class="text-gray-600 leading-relaxed">
+							Cubrimos todo el Área Metropolitana: Medellín,
+							Envigado, Sabaneta, Itagüí, La Estrella y Bello.
+						</p>
+					</div>
 
-				<!-- Q4 -->
-				<div>
-					<h3 class="text-xl font-bold text-gray-900 mb-3">
-						¿Tienen servicio los domingos?
-					</h3>
-					<p class="text-gray-600 leading-relaxed">
-						Nuestro servicio estándar es de Lunes a Sábado. Domingos
-						y festivos solo con programación previa para empresas.
-					</p>
+					<!-- Q3 -->
+					<div>
+						<h3 class="text-xl font-bold text-gray-900 mb-3">
+							¿Hacen pagos o compras por mí?
+						</h3>
+						<p class="text-gray-600 leading-relaxed">
+							Sí. Podemos pagar facturas o comprar artículos. Si
+							el valor es alto, requerimos transferencia previa.
+						</p>
+					</div>
+
+					<!-- Q4 -->
+					<div>
+						<h3 class="text-xl font-bold text-gray-900 mb-3">
+							¿Tienen servicio los domingos?
+						</h3>
+						<p class="text-gray-600 leading-relaxed">
+							Nuestro servicio estándar es de Lunes a Sábado.
+							Domingos y festivos solo con programación previa
+							para empresas.
+						</p>
+					</div>
 				</div>
 			</div>
-		</div>
-	</section>
+		</section>
+	</main>
 
 	<footer id="contacto" class="bg-gray-900 text-white py-10">
 		<div class="container mx-auto px-4">
