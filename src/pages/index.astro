@@ -21,6 +21,30 @@ const heroImageAbsoluteUrl = new URL(optimizedHeroBg.src, Astro.site);
 	description="Mensajería Medellín en moto: mandados, diligencias, trámites y entregas express en el Valle de Aburrá. Cotiza por WhatsApp."
 	image={heroImageAbsoluteUrl.toString()}
 >
+	<script
+		type="application/ld+json"
+		slot="schema"
+		set:html={JSON.stringify({
+			"@context": "https://schema.org",
+			"@type": "CourierService",
+			name: "Mensajería Medellín",
+			url: "https://mensajeriamedellin.com/",
+			logo: "https://mensajeriamedellin.com/logo.png",
+			image: heroImageAbsoluteUrl.toString(),
+			description:
+				"Mensajeros urbanos en moto para mandados, diligencias y trámites en Medellín y Valle de Aburrá.",
+			telephone: "+57 333 281 5872",
+			areaServed: [
+				{ "@type": "City", name: "Medellín" },
+				{ "@type": "City", name: "Envigado" },
+				{ "@type": "City", name: "Sabaneta" },
+				{ "@type": "City", name: "Itagüí" },
+				{ "@type": "City", name: "Bello" },
+				{ "@type": "City", name: "La Estrella" },
+			],
+			priceRange: "$$",
+		})}
+	/>
 	<header class="bg-white shadow-sm sticky top-0 z-50">
 		<div
 			class="container mx-auto px-4 py-4 flex justify-between items-center"
