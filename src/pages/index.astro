@@ -21,8 +21,6 @@ const heroImageAbsoluteUrl = new URL(optimizedHeroBg.src, Astro.site);
 	description="Mensajería Medellín en moto: mandados, diligencias, trámites y entregas express en el Valle de Aburrá. Cotiza por WhatsApp."
 	image={heroImageAbsoluteUrl.toString()}
 >
-	<WhatsAppButton />
-
 	<header class="bg-white shadow-sm sticky top-0 z-50">
 		<div
 			class="container mx-auto px-4 py-4 flex justify-between items-center"
@@ -902,4 +900,5 @@ const heroImageAbsoluteUrl = new URL(optimizedHeroBg.src, Astro.site);
 			</div>
 		</div>
 	</footer>
+	<WhatsAppButton />
 </Layout>
