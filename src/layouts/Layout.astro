@@ -24,6 +24,20 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width" />
+        <!-- Google Analytics -->
+        <script
+            type="text/partytown"
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=G-HCRSS9W804"
+        ></script>
+        <script type="text/partytown">
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag("js", new Date());
+            gtag("config", "G-HCRSS9W804");
+        </script>
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link
             rel="icon"
