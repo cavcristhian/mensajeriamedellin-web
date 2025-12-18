@@ -30,11 +30,13 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
             async
             src="https://www.googletagmanager.com/gtag/js?id=G-HCRSS9W804"
         ></script>
-        <script type="text/partytown">
+        <script is:inline>
             window.dataLayer = window.dataLayer || [];
             function gtag() {
                 dataLayer.push(arguments);
             }
+        </script>
+        <script type="text/partytown">
             gtag("js", new Date());
             gtag("config", "G-HCRSS9W804");
         </script>
