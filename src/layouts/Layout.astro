@@ -37,6 +37,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
             }
         </script>
         <script type="text/partytown">
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
             gtag("js", new Date());
             gtag("config", "G-HCRSS9W804");
         </script>
