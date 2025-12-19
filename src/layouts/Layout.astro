@@ -26,17 +26,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         <meta name="viewport" content="width=device-width" />
         <!-- Google Analytics -->
         <script
-            type="text/partytown"
             async
             src="https://www.googletagmanager.com/gtag/js?id=G-HCRSS9W804"
         ></script>
         <script is:inline>
-            window.dataLayer = window.dataLayer || [];
-            function gtag() {
-                dataLayer.push(arguments);
-            }
-        </script>
-        <script type="text/partytown">
             window.dataLayer = window.dataLayer || [];
             function gtag() {
                 dataLayer.push(arguments);

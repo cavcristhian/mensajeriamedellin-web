@@ -124,7 +124,7 @@ const heroImageAbsoluteUrl = new URL(optimizedHeroBg.src, Astro.site);
 						target="_blank"
 						rel="noopener noreferrer"
 						class="bg-green-700 hover:bg-green-800 text-white font-bold py-4 px-8 rounded-full text-lg shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 inline-flex items-center gap-2"
-						onclick="gtag('event', 'whatsapp_click', { 'event_category': 'interaction', 'event_label': 'hero_button' });"
+						id="whatsapp-hero-btn"
 					>
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
@@ -343,7 +343,7 @@ const heroImageAbsoluteUrl = new URL(optimizedHeroBg.src, Astro.site);
 						target="_blank"
 						rel="noopener noreferrer"
 						class="bg-green-700 hover:bg-green-800 text-white font-bold py-4 px-8 rounded-full text-lg shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 inline-flex items-center gap-2"
-						onclick="gtag('event', 'whatsapp_click', { 'event_category': 'interaction', 'event_label': 'services_button' });"
+						id="whatsapp-services-btn"
 					>
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
@@ -934,4 +934,34 @@ const heroImageAbsoluteUrl = new URL(optimizedHeroBg.src, Astro.site);
 		</div>
 	</footer>
 	<WhatsAppButton />
+	<script>
+		// Utility function to add tracking to buttons
+		function addTracking(id, label) {
+			const btn = document.getElementById(id);
+			if (btn) {
+				btn.addEventListener("click", () => {
+					// Check if gtag is defined (it should be)
+					// @ts-ignore
+					if (typeof gtag === "function") {
+						// @ts-ignore
+						gtag("event", "whatsapp_click", {
+							event_category: "interaction",
+							event_label: label,
+						});
+					} else {
+						console.warn("gtag not defined");
+					}
+				});
+			}
+		}
+
+		// Add tracking to buttons
+		// Wait for DOM to be ready
+		document.addEventListener("DOMContentLoaded", () => {
+			addTracking("whatsapp-hero-btn", "hero_button");
+			addTracking("whatsapp-services-btn", "services_button");
+			addTracking("whatsapp-floating-btn", "floating_button");
+			addTracking("whatsapp-mobile-menu-btn", "mobile_menu");
+		});
+	</script>
 </Layout>
