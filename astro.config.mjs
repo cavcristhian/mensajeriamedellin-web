@@ -6,6 +6,8 @@ import tailwindcss from '@tailwindcss/vite';
 
 import sitemap from '@astrojs/sitemap';
 
+import partytown from '@astrojs/partytown';
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://mensajeriamedellin.com',
@@ -15,7 +17,11 @@ export default defineConfig({
 
   integrations: [
     sitemap(),
-    sitemap(),
+    partytown({
+      config: {
+        forward: ["dataLayer.push"],
+      },
+    }),
   ],
   build: {
     inlineStylesheets: 'always'
