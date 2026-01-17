@@ -45,36 +45,43 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
                 dataLayer.push(arguments);
             }
         </script>
+        <!-- Favicon para Google Search (mínimo 48x48, múltiplos de 48 recomendados) -->
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="48x48"
+            href="https://mensajeriamedellin.com/favicon-48x48.png"
+        />
         <link
             rel="icon"
             type="image/png"
             sizes="192x192"
             href="https://mensajeriamedellin.com/android-chrome-192x192.png"
         />
-
-        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <!-- Favicon .ico para navegadores legacy -->
         <link
             rel="icon"
-            type="image/png"
-            sizes="48x48"
-            href="/favicon-48x48.png"
+            href="https://mensajeriamedellin.com/favicon.ico"
+            sizes="32x32"
         />
+        <!-- Favicons adicionales para compatibilidad -->
         <link
             rel="icon"
             type="image/png"
             sizes="32x32"
-            href="/favicon-32x32.png"
+            href="https://mensajeriamedellin.com/favicon-32x32.png"
         />
         <link
             rel="icon"
             type="image/png"
             sizes="16x16"
-            href="/favicon-16x16.png"
+            href="https://mensajeriamedellin.com/favicon-16x16.png"
         />
+        <!-- Apple Touch Icon -->
         <link
             rel="apple-touch-icon"
             sizes="180x180"
-            href="/apple-touch-icon.png"
+            href="https://mensajeriamedellin.com/apple-touch-icon.png"
         />
         <meta name="generator" content={Astro.generator} />
         <meta name="theme-color" content="#0066cc" />
