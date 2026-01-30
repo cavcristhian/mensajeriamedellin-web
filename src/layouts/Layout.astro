@@ -21,7 +21,10 @@ const {
 // Use provided image or fallback to a default if available, otherwise undefined
 const socialImage =
     image || (Astro.site ? new URL("/logo.png", Astro.site) : "/logo.png");
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+// Normalize path to remove trailing slash for canonical URL
+const path = Astro.url.pathname.replace(/\/$/, "") || "";
+const canonicalURL = new URL(path, Astro.site);
 ---
 
 <!doctype html>

@@ -11,6 +11,7 @@ import partytown from '@astrojs/partytown';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://mensajeriamedellin.com',
+  trailingSlash: 'never',
   vite: {
     plugins: [tailwindcss()]
   },
