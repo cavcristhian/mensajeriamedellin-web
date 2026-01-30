@@ -1,0 +1,572 @@
+---
+import "../styles/global.css";
+import Layout from "../layouts/Layout.astro";
+import WhatsAppButton from "../components/WhatsAppButton.astro";
+import MobileMenu from "../components/MobileMenu.astro";
+import { Image, getImage } from "astro:assets";
+import teamImage from "../assets/images/equipo-mensajeria.jpg";
+import serviceErrands from "../assets/images/service_errands.png";
+
+const optimizedTeamImage = await getImage({ src: teamImage, format: "webp" });
+const heroImageAbsoluteUrl = new URL(optimizedTeamImage.src, Astro.site);
+const currentYear = new Date().getFullYear();
+---
+
+<Layout
+    title="Mandados en Medellín | Vueltas y Diligencias a Domicilio (WhatsApp)"
+    description="Mandados en Medellín y Valle de Aburrá. Vueltas y diligencias: compras, pagos, llaves, trámites y filas. Cotiza y pide tu mandado por WhatsApp."
+    image={heroImageAbsoluteUrl.toString()}
+>
+    <script
+        type="application/ld+json"
+        slot="schema"
+        set:html={JSON.stringify([
+            {
+                "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                itemListElement: [
+                    {
+                        "@type": "ListItem",
+                        position: 1,
+                        name: "Inicio",
+                        item: "https://mensajeriamedellin.com/",
+                    },
+                    {
+                        "@type": "ListItem",
+                        position: 2,
+                        name: "Mandados",
+                        item: "https://mensajeriamedellin.com/mandados",
+                    },
+                ],
+            },
+            {
+                "@context": "https://schema.org",
+                "@type": "Service",
+                serviceType: "Mandados y Vueltas en Medellín",
+                provider: {
+                    "@type": "LocalBusiness",
+                    name: "Mensajería Medellín",
+                    url: "https://mensajeriamedellin.com/",
+                    telephone: "+57 333 281 5872",
+                    areaServed: "Medellín y Valle de Aburrá",
+                },
+                description:
+                    "Servicio de mandados a domicilio en Medellín: vueltas personales, trámites express y diligencias urgentes.",
+            },
+            {
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                mainEntity: [
+                    {
+                        "@type": "Question",
+                        name: "¿Cuánto cuesta un mandado en Medellín?",
+                        acceptedAnswer: {
+                            "@type": "Answer",
+                            text: "El precio de un mandado en Medellín depende de la distancia y el tipo de diligencia. Contáctanos por WhatsApp para recibir una cotización inmediata.",
+                        },
+                    },
+                    {
+                        "@type": "Question",
+                        name: "¿En cuánto tiempo hacen el mandado?",
+                        acceptedAnswer: {
+                            "@type": "Answer",
+                            text: "Realizamos mandados express. Generalmente, una vez asignado el mensajero, la diligencia se completa en menos de 60-90 minutos dependiendo del tráfico en Medellín.",
+                        },
+                    },
+                    {
+                        "@type": "Question",
+                        name: "¿Qué tipo de diligencias hacen?",
+                        acceptedAnswer: {
+                            "@type": "Answer",
+                            text: "Realizamos todo tipo de diligencias: pago de facturas, recogida de llaves, compras en supermercados o droguerías, y radicación de documentos.",
+                        },
+                    },
+                    {
+                        "@type": "Question",
+                        name: "¿En qué zonas de Medellín hacen mandados?",
+                        acceptedAnswer: {
+                            "@type": "Answer",
+                            text: "Cubrimos todo el Valle de Aburrá: Medellín (El Poblado, Laureles, Belén, Centro), Envigado, Sabaneta, Itagüí, La Estrella y Bello.",
+                        },
+                    },
+                ],
+            },
+        ])}
+    />
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div
+            class="container mx-auto px-4 py-4 flex justify-between items-center"
+        >
+            <a
+                href="/"
+                class="text-2xl font-bold text-brand-blue tracking-tight flex items-center gap-2"
+            >
+                <img
+                    src="/logo.png"
+                    alt="Logo Mensajería Medellín"
+                    class="h-10 w-10 object-contain"
+                />
+                Mensajería Medellín
+            </a>
+            <nav class="hidden md:flex items-center gap-1">
+                <a
+                    href="/"
+                    class="text-gray-600 hover:text-brand-blue px-3 py-2 font-medium"
+                    >Inicio</a
+                >
+                <a
+                    href="#servicios-mandados"
+                    class="text-gray-600 hover:text-brand-blue px-3 py-2 font-medium"
+                    >Servicios</a
+                >
+                <a
+                    href="#cobertura-mandados"
+                    class="text-gray-600 hover:text-brand-blue px-3 py-2 font-medium"
+                    >Cobertura</a
+                >
+                <a
+                    href="#faq-mandados"
+                    class="text-gray-600 hover:text-brand-blue px-3 py-2 font-medium"
+                    >Preguntas</a
+                >
+                <a
+                    href="#contacto"
+                    class="text-gray-600 hover:text-brand-blue px-3 py-2 font-medium"
+                    >Contacto</a
+                >
+            </nav>
+            <MobileMenu />
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section
+            class="relative bg-brand-blue text-white py-12 lg:py-20 overflow-hidden"
+        >
+            <div class="container mx-auto px-4 relative z-10">
+                <div
+                    class="flex flex-col lg:flex-row items-center gap-10 lg:gap-16"
+                >
+                    <!-- Text Column -->
+                    <div class="flex-1 text-center lg:text-left">
+                        <span
+                            class="inline-block bg-white/20 text-white text-sm font-semibold px-4 py-1.5 rounded-full mb-4"
+                        >
+                            🏃 Servicio de Vueltas Personales
+                        </span>
+                        <h1
+                            class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 leading-tight"
+                        >
+                            Mandados en Medellín
+                        </h1>
+                        <h2
+                            class="text-xl md:text-2xl text-white font-medium mb-6"
+                        >
+                            Vueltas y diligencias a domicilio en Medellín y el
+                            Valle de Aburrá
+                        </h2>
+                        <p
+                            class="text-lg md:text-xl text-white/90 mb-8 max-w-xl mx-auto lg:mx-0"
+                        >
+                            Mandados en Medellín para vueltas y diligencias a
+                            domicilio. Si buscas un <strong
+                                >mensajero para vueltas personales</strong
+                            > o
+                            <strong>diligencias urgentes</strong>, nosotros las
+                            hacemos por ti en todo el Valle de Aburrá. Pide tu
+                            mandado a domicilio en Medellín por WhatsApp.
+                        </p>
+                        <div
+                            class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+                        >
+                            <a
+                                href="https://wa.me/573332815872?text=Hola%2C%20necesito%20que%20me%20ayuden%20con%20un%20mandado%20en%20Medell%C3%ADn"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="bg-brand-orange text-white px-8 py-4 rounded-full font-bold text-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all flex items-center justify-center gap-2"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    class="h-6 w-6"
+                                    fill="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        d="M17.472 14.382c-.297-.148-1.758-.867-2.03-.967-.272-.099-.47-.148-.67.15-.197.296-.767.966-.94 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.074-.148-.669-1.611-.916-2.206-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.064 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zm-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.981.998-3.648-.235-.374a9.861 9.861 0 01-1.511-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.892 6.993c-.003 5.45-4.437 9.884-9.885 9.884zm8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.546 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+                                    ></path>
+                                </svg>
+                                Pedir Mandado
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Image Column -->
+                    <div class="flex-1 relative hidden lg:block">
+                        <div
+                            class="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20"
+                        >
+                            <Image
+                                src={teamImage}
+                                alt="Equipo de mensajeros para mandados en Medellín"
+                                class="w-full h-auto object-cover"
+                                width={600}
+                                format="webp"
+                                quality="high"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Servicios de Mandados -->
+        <section id="servicios-mandados" class="bg-white py-12 md:py-20">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2
+                        class="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
+                    >
+                        ¿Qué mandados hacemos?
+                    </h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                        Realizamos mandados en Medellín para que no pierdas
+                        tiempo: compras, pagos, llaves y trámites personales.
+                    </p>
+                </div>
+
+                <div
+                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+                >
+                    <!-- Card 1 -->
+                    <div
+                        class="bg-gray-50 rounded-xl p-6 border border-gray-100 hover:shadow-lg transition-shadow"
+                    >
+                        <div
+                            class="w-12 h-12 bg-brand-orange/10 rounded-xl flex items-center justify-center mb-4"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="h-6 w-6 text-brand-orange"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"
+                                ></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">
+                            Recoger Llaves
+                        </h3>
+                        <p class="text-gray-600 text-sm">
+                            Recogemos llaves donde tu familiar, amigo o portería
+                            y te las llevamos.
+                        </p>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div
+                        class="bg-gray-50 rounded-xl p-6 border border-gray-100 hover:shadow-lg transition-shadow"
+                    >
+                        <div
+                            class="w-12 h-12 bg-brand-orange/10 rounded-xl flex items-center justify-center mb-4"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="h-6 w-6 text-brand-orange"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"
+                                ></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">
+                            Pagar Facturas
+                        </h3>
+                        <p class="text-gray-600 text-sm">
+                            Servicios públicos, cuotas, recibos. Tú transfieres,
+                            nosotros pagamos.
+                        </p>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div
+                        class="bg-gray-50 rounded-xl p-6 border border-gray-100 hover:shadow-lg transition-shadow"
+                    >
+                        <div
+                            class="w-12 h-12 bg-brand-orange/10 rounded-xl flex items-center justify-center mb-4"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="h-6 w-6 text-brand-orange"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+                                ></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">
+                            Hacer Compras
+                        </h3>
+                        <p class="text-gray-600 text-sm">
+                            Droguerías, supermercados, ferreterías. Compramos lo
+                            que necesites.
+                        </p>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div
+                        class="bg-gray-50 rounded-xl p-6 border border-gray-100 hover:shadow-lg transition-shadow"
+                    >
+                        <div
+                            class="w-12 h-12 bg-brand-orange/10 rounded-xl flex items-center justify-center mb-4"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="h-6 w-6 text-brand-orange"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                                ></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">
+                            Radicación y Trámites
+                        </h3>
+                        <p class="text-gray-600 text-sm">
+                            Gestión ante notarías, bancos y oficinas. Hacemos la
+                            fila por ti.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="bg-brand-blue py-12">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">
+                    ¿Listo para delegar tus vueltas?
+                </h2>
+                <p class="text-white/80 mb-6 max-w-xl mx-auto">
+                    Cuéntanos qué necesitas por WhatsApp y te cotizamos en
+                    segundos.
+                </p>
+                <a
+                    href="https://wa.me/573332815872?text=Hola%2C%20necesito%20que%20me%20ayuden%20con%20un%20mandado"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-2 bg-white text-brand-blue px-8 py-4 rounded-full font-bold text-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-6 w-6"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                    >
+                        <path
+                            d="M17.472 14.382c-.297-.148-1.758-.867-2.03-.967-.272-.099-.47-.148-.67.15-.197.296-.767.966-.94 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.074-.148-.669-1.611-.916-2.206-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.064 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zm-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.981.998-3.648-.235-.374a9.861 9.861 0 01-1.511-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.892 6.993c-.003 5.45-4.437 9.884-9.885 9.884zm8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.546 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+                        ></path>
+                    </svg>
+                    Pedir Mandado Ahora
+                </a>
+            </div>
+        </section>
+
+        <!-- Cobertura Section -->
+        <section
+            id="cobertura-mandados"
+            class="bg-white py-12 border-t border-gray-100"
+        >
+            <div class="container mx-auto px-4">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-6">
+                        Zonas de cobertura de mandados en Medellín
+                    </h2>
+                    <p class="text-lg text-gray-600 mb-8">
+                        Prestamos servicio de vueltas y mandados en Medellín,
+                        Envigado, Sabaneta, Itagüí, La Estrella y Bello.
+                        Cubrimos barrios principales como El Poblado, Laureles,
+                        Belén, Centro y zonas residenciales.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section
+            id="faq-mandados"
+            class="bg-gray-50 py-12 md:py-20 border-t border-gray-100"
+        >
+            <div class="container mx-auto px-4">
+                <div class="max-w-3xl mx-auto">
+                    <h2
+                        class="text-3xl font-bold text-center text-gray-900 mb-12"
+                    >
+                        Preguntas frecuentes sobre mandados en Medellín
+                    </h2>
+
+                    <div class="space-y-8">
+                        <div>
+                            <h3 class="text-xl font-bold text-brand-blue mb-3">
+                                ¿Cuánto cuesta un mandado en Medellín?
+                            </h3>
+                            <p class="text-gray-600">
+                                El precio varía según la distancia y la
+                                complejidad de la diligencia. Contáctanos por
+                                WhatsApp para darte un valor exacto en segundos.
+                            </p>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-brand-blue mb-3">
+                                ¿En cuánto tiempo hacen el mandado?
+                            </h3>
+                            <p class="text-gray-600">
+                                Generalmente un mensajero llega a tu ubicación
+                                en menos de 30 minutos y completa la vuelta en
+                                un lapso de 60 a 90 minutos.
+                            </p>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-brand-blue mb-3">
+                                ¿Qué tipo de diligencias hacen?
+                            </h3>
+                            <p class="text-gray-600">
+                                Hacemos de todo: pago de servicios, recogida de
+                                llaves, compras en tiendas, radicación de
+                                documentos y más.
+                            </p>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-brand-blue mb-3">
+                                ¿Cómo pedir un mandado por WhatsApp?
+                            </h3>
+                            <p class="text-gray-600">
+                                Simplemente haz clic en nuestro botón de
+                                WhatsApp, dinos qué necesitas y dónde, y te
+                                asignamos un mensajero.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Link to main services -->
+        <section class="bg-white py-10 border-t border-gray-100">
+            <div class="container mx-auto px-4 text-center">
+                <p class="text-gray-600">
+                    ¿Necesitas mensajería para empresas con facturación
+                    electrónica?
+                    <a
+                        href="/"
+                        class="text-brand-blue font-semibold hover:underline"
+                    >
+                        Conoce nuestra mensajería en Medellín para empresas →
+                    </a>
+                </p>
+                <p class="text-gray-500 text-sm mt-4">
+                    ¿Tienes moto y buscas empleo?
+                    <a
+                        href="/empleo"
+                        class="text-brand-orange font-semibold hover:underline"
+                    >
+                        Postúlate como mensajero en Medellín aquí →
+                    </a>
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="contacto" class="bg-gray-900 text-gray-300 py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold text-white mb-4">
+                        Mensajería Medellín
+                    </h3>
+                    <p class="text-gray-400 mb-6">
+                        Tu aliado para mandados y vueltas personales en el Valle
+                        de Aburrá.
+                    </p>
+                    <h4
+                        class="font-bold text-white mb-3 text-sm uppercase tracking-wider"
+                    >
+                        Enlaces de Interés
+                    </h4>
+                    <ul class="text-gray-400 text-sm space-y-2">
+                        <li>
+                            <a
+                                href="/"
+                                class="hover:text-brand-orange transition-colors"
+                                >Logística para Empresas</a
+                            >
+                        </li>
+                        <li>
+                            <a
+                                href="/mandados"
+                                class="hover:text-brand-orange transition-colors"
+                                >Mandados en Medellín</a
+                            >
+                        </li>
+                        <li>
+                            <a
+                                href="/empleo"
+                                class="hover:text-brand-orange transition-colors"
+                                >Empleo Mensajero Medellín</a
+                            >
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white mb-3">Contacto</h4>
+                    <p class="text-gray-400 text-sm">+57 333 281 5872</p>
+                    <p class="text-gray-400 text-sm">
+                        info@mensajeriamedellin.com
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white mb-3">Horario</h4>
+                    <p class="text-gray-400 text-sm">
+                        Lunes - Viernes: 7:00 AM - 6:00 PM
+                    </p>
+                    <p class="text-gray-400 text-sm">
+                        Sábados: 8:00 AM - 1:00 PM
+                    </p>
+                </div>
+            </div>
+            <div
+                class="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-500"
+            >
+                © {currentYear} Mensajería Medellín. Servicio de mandados en todo
+                el Valle de Aburrá.
+            </div>
+        </div>
+    </footer>
+
+    <WhatsAppButton />
+</Layout>

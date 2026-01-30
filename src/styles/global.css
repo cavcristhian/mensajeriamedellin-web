@@ -4,3 +4,32 @@
   --color-brand-blue: #0066cc;
   --color-brand-orange: #ff9900;
 }
+
+/* Hide scrollbar for carousels */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Slow bounce animation for badges */
+@keyframes bounce-slow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+.animate-bounce-slow {
+  animation: bounce-slow 2s ease-in-out infinite;
+}
+
+/* Bottom padding for mobile sticky CTA */
+@media (max-width: 767px) {
+  body {
+    padding-bottom: 5rem;
+  }
+}
