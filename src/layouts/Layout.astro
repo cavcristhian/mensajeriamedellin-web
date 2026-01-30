@@ -117,6 +117,27 @@ const canonicalURL = new URL(path, Astro.site);
         <slot name="schema" />
     </head>
     <body class="font-sans antialiased text-gray-800 bg-gray-50">
+        <script is:inline>
+            (function () {
+                var path = window.location.pathname;
+                // Si no termina en / y no tiene extensión (no es un archivo como .png, .css)
+                if (
+                    path !== "/" &&
+                    !path.endsWith("/") &&
+                    !path.includes(".")
+                ) {
+                    window.location.replace(
+                        window.location.protocol +
+                            "//" +
+                            window.location.host +
+                            path +
+                            "/" +
+                            window.location.search +
+                            window.location.hash,
+                    );
+                }
+            })();
+        </script>
         <slot />
         <WhatsAppButton message={waMessage} buttonText={waButtonText} />
     </body>
