@@ -5,12 +5,16 @@ interface Props {
     title: string;
     description?: string;
     image?: string;
+    waMessage?: string;
+    waButtonText?: string;
 }
 
 const {
     title,
     description = "Soluciones logísticas para empresas y e-commerce en Medellín. Mensajería, entregas express y domicilios con recaudo. Rápido y seguro.",
     image,
+    waMessage,
+    waButtonText,
 } = Astro.props;
 
 // Use provided image or fallback to a default if available, otherwise undefined
@@ -110,5 +114,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     </head>
     <body class="font-sans antialiased text-gray-800 bg-gray-50">
         <slot />
+        <WhatsAppButton message={waMessage} buttonText={waButtonText} />
     </body>
 </html>
