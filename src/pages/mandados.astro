@@ -150,8 +150,10 @@ const currentYear = new Date().getFullYear();
                 <div
                     class="flex flex-col lg:flex-row items-center gap-10 lg:gap-16"
                 >
-                    <!-- Text Column -->
-                    <div class="flex-1 text-center lg:text-left">
+                    <!-- Text Column (Second on mobile) -->
+                    <div
+                        class="flex-1 text-center lg:text-left order-2 lg:order-1"
+                    >
                         <span
                             class="inline-block bg-white/20 text-white text-sm font-semibold px-4 py-1.5 rounded-full mb-4"
                         >
@@ -203,8 +205,8 @@ const currentYear = new Date().getFullYear();
                         </div>
                     </div>
 
-                    <!-- Image Column -->
-                    <div class="flex-1 relative hidden lg:block">
+                    <!-- Image Column (First on mobile) -->
+                    <div class="flex-1 relative order-1 lg:order-2">
                         <div
                             class="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white/10 transform rotate-2 hover:rotate-0 transition-all duration-700 group"
                         >
