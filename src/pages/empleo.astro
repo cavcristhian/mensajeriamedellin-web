@@ -4,10 +4,10 @@ import Layout from "../layouts/Layout.astro";
 import WhatsAppButton from "../components/WhatsAppButton.astro";
 import MobileMenu from "../components/MobileMenu.astro";
 import { Image, getImage } from "astro:assets";
-import teamImage from "../assets/images/equipo-mensajeria.jpg";
+import heroImage from "../assets/images/empleo-hero.png";
 
-const optimizedTeamImage = await getImage({ src: teamImage, format: "webp" });
-const heroImageAbsoluteUrl = new URL(optimizedTeamImage.src, Astro.site);
+const optimizedHeroImage = await getImage({ src: heroImage, format: "webp" });
+const heroImageAbsoluteUrl = new URL(optimizedHeroImage.src, Astro.site);
 const currentYear = new Date().getFullYear();
 ---
 
@@ -190,8 +190,8 @@ const currentYear = new Date().getFullYear();
                             class="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white/10 transform rotate-2 hover:rotate-0 transition-all duration-700 group"
                         >
                             <Image
-                                src={teamImage}
-                                alt="Equipo de mensajeros de Mensajería Medellín"
+                                src={heroImage}
+                                alt="Mensajero profesional - Empleo Mensajería Medellín"
                                 class="w-full h-auto object-cover transform scale-105 group-hover:scale-100 transition-transform duration-700"
                                 width={800}
                                 format="webp"
