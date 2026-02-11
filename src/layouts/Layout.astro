@@ -35,11 +35,10 @@ const canonicalURL = new URL(path, Astro.site);
         <!-- Google Analytics -->
         <!-- Google Analytics (Partytown) -->
         <script
-            type="text/partytown"
             async
             src="https://www.googletagmanager.com/gtag/js?id=G-HCRSS9W804"
         ></script>
-        <script type="text/partytown">
+        <script is:inline>
             window.dataLayer = window.dataLayer || [];
             function gtag() {
                 dataLayer.push(arguments);
