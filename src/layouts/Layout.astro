@@ -46,12 +46,31 @@ const canonicalURL = new URL(path, Astro.site);
             }
             gtag("js", new Date());
             gtag("config", "G-HCRSS9W804");
+            gtag("config", "AW-17948061968");
         </script>
         <script is:inline>
             window.dataLayer = window.dataLayer || [];
             function gtag() {
                 dataLayer.push(arguments);
             }
+
+            // Tracking de clics en WhatsApp para conversiones
+            document.addEventListener("click", (e) => {
+                const target = e.target.closest("a");
+                if (
+                    target &&
+                    (target.id === "whatsapp-hero-btn" ||
+                        target.id === "whatsapp-services-btn" ||
+                        target.id === "whatsapp-floating-btn" ||
+                        target.id === "whatsapp-sticky-btn")
+                ) {
+                    gtag("event", "generate_lead", {
+                        event_category: "engagement",
+                        event_label: "WhatsApp Contact",
+                        value: 1,
+                    });
+                }
+            });
         </script>
         <!-- Favicon para Google Search (mínimo 48x48, múltiplos de 48 recomendados) -->
         <link
