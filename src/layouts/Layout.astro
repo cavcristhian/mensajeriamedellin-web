@@ -33,7 +33,6 @@ const canonicalURL = new URL(path, Astro.site);
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width" />
         <!-- Google Analytics -->
-        <!-- Google Analytics (Partytown) -->
         <script
             async
             src="https://www.googletagmanager.com/gtag/js?id=G-HCRSS9W804"
@@ -46,32 +45,40 @@ const canonicalURL = new URL(path, Astro.site);
             gtag("js", new Date());
             gtag("config", "G-HCRSS9W804");
             gtag("config", "AW-17948061968");
-        </script>
-        <script is:inline>
-            window.dataLayer = window.dataLayer || [];
-            function gtag() {
-                dataLayer.push(arguments);
-            }
 
-            // Tracking de clics en WhatsApp para conversiones
+            // Tracking inteligente de clics en WhatsApp
             document.addEventListener("click", (e) => {
                 const target = e.target.closest("a");
-                if (
-                    target &&
-                    (target.id === "whatsapp-hero-btn" ||
-                        target.id === "whatsapp-services-btn" ||
-                        target.id === "whatsapp-floating-btn" ||
-                        target.id === "whatsapp-sticky-btn")
-                ) {
-                    gtag("event", "generate_lead", {
-                        event_category: "engagement",
-                        event_label: "WhatsApp Contact",
-                        value: 1,
+                if (target && target.href && target.href.includes("wa.me")) {
+                    const path = window.location.pathname;
+
+                    // 1. Registro universal en Analytics para todos los clics de WhatsApp
+                    gtag("event", "whatsapp_click", {
+                        page_path: path,
+                        button_id: target.id || "no-id",
                     });
-                    // Conversión específica de Google Ads
-                    gtag("event", "conversion", {
-                        send_to: "AW-17948061968/Rq1oCOrxiPcbEJDipu5C",
-                    });
+
+                    // 2. SOLO contar como CONVERSIÓN si el cliente está en Home o Mandados
+                    // (Evitamos que los que buscan empleo cuenten como venta)
+                    if (path === "/" || path.includes("/mandados")) {
+                        // Evento para Google Analytics
+                        gtag("event", "generate_lead", {
+                            event_category: "engagement",
+                            event_label: "Client Lead",
+                            value: 1,
+                        });
+
+                        // Conversión específica de Google Ads
+                        gtag("event", "conversion", {
+                            send_to: "AW-17948061968/Rq1oCOrxiPcbEJDipu5C",
+                        });
+                    } else if (path.includes("/empleo")) {
+                        // Evento específico para recursos humanos (No es conversión de venta)
+                        gtag("event", "empleo_contact", {
+                            event_category: "engagement",
+                            event_label: "Postulación Mensajero",
+                        });
+                    }
                 }
             });
         </script>

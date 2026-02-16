@@ -1421,33 +1421,3 @@ const currentYear = new Date().getFullYear();
 		</div>
 	</div>
 </footer>
-<script>
-	// Utility function to add tracking to buttons
-	function addTracking(id, label) {
-		const btn = document.getElementById(id);
-		if (btn) {
-			btn.addEventListener("click", () => {
-				// Check if gtag is defined (it should be)
-				// @ts-ignore
-				if (typeof gtag === "function") {
-					// @ts-ignore
-					gtag("event", "whatsapp_click", {
-						event_category: "interaction",
-						event_label: label,
-					});
-				} else {
-					console.warn("gtag not defined");
-				}
-			});
-		}
-	}
-
-	// Add tracking to buttons
-	// Wait for DOM to be ready
-	document.addEventListener("DOMContentLoaded", () => {
-		addTracking("whatsapp-hero-btn", "hero_button");
-		addTracking("whatsapp-services-btn", "services_button");
-		addTracking("whatsapp-floating-btn", "floating_button");
-		addTracking("whatsapp-mobile-menu-btn", "mobile_menu");
-	});
-</script>
