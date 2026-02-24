@@ -47,20 +47,39 @@ const canonicalURL = new URL(path, Astro.site);
             gtag("config", "AW-17948061968");
 
             // Tracking inteligente de clics en WhatsApp
-            document.addEventListener("click", (e) => {
-                const target = e.target.closest("a");
-                if (target && target.href && target.href.includes("wa.me")) {
-                    const path = window.location.pathname;
+            // IMPORTANTE: Pausamos la navegación para que Google reciba el dato
+            // antes de que el navegador abra WhatsApp
+            document.addEventListener("click", function (e) {
+                var target = e.target.closest ? e.target.closest("a") : null;
+                if (
+                    target &&
+                    target.href &&
+                    target.href.indexOf("wa.me") > -1
+                ) {
+                    // PASO 1: Detener la navegación inmediata
+                    e.preventDefault();
+                    e.stopPropagation();
 
-                    // 1. Registro universal en Analytics para todos los clics de WhatsApp
+                    var url = target.href;
+                    var path = window.location.pathname;
+                    var navigated = false;
+
+                    // Función segura para abrir WhatsApp (solo una vez)
+                    function openWhatsApp() {
+                        if (!navigated) {
+                            navigated = true;
+                            window.open(url, "_blank");
+                        }
+                    }
+
+                    // PASO 2: Registro universal en Analytics
                     gtag("event", "whatsapp_click", {
                         page_path: path,
                         button_id: target.id || "no-id",
                     });
 
-                    // 2. SOLO contar como CONVERSIÓN si el cliente está en Home o Mandados
-                    // (Evitamos que los que buscan empleo cuenten como venta)
-                    if (path === "/" || path.includes("/mandados")) {
+                    // PASO 3: Conversión según la página
+                    if (path === "/" || path.indexOf("/mandados") > -1) {
                         // Evento para Google Analytics
                         gtag("event", "generate_lead", {
                             event_category: "engagement",
@@ -68,17 +87,25 @@ const canonicalURL = new URL(path, Astro.site);
                             value: 1,
                         });
 
-                        // Conversión específica de Google Ads
+                        // Conversión de Google Ads CON CALLBACK
+                        // Google llamará a openWhatsApp() cuando el dato se envíe
                         gtag("event", "conversion", {
                             send_to: "AW-17948061968/Rq1oCOrxiPcbEJDipu5C",
+                            event_callback: openWhatsApp,
                         });
-                    } else if (path.includes("/empleo")) {
-                        // Evento específico para recursos humanos (No es conversión de venta)
+                    } else if (path.indexOf("/empleo") > -1) {
                         gtag("event", "empleo_contact", {
                             event_category: "engagement",
                             event_label: "Postulación Mensajero",
+                            event_callback: openWhatsApp,
                         });
+                    } else {
+                        openWhatsApp();
                     }
+
+                    // PASO 4: Respaldo de seguridad (1 segundo máximo de espera)
+                    // Si Google no responde en 1s, abrimos WhatsApp de todas formas
+                    setTimeout(openWhatsApp, 1000);
                 }
             });
         </script>
